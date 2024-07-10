@@ -1,0 +1,40 @@
+{
+  "name": "sveltekit-cloudflare-template",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
+    "wrangler": "wrangler"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-cloudflare": "^4.6.1",
+    "@sveltejs/kit": "^2.5.18",
+    "@sveltejs/vite-plugin-svelte": "^3.1.1",
+    "@tailwindcss/typography": "^0.5.13",
+    "autoprefixer": "^10.4.19",
+    "daisyui": "^4.12.10",
+    "postcss": "^8.4.39",
+    "svelte": "^4.2.18",
+    "svelte-check": "^3.8.4",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.5.3",
+    "vite": "^5.3.3",
+    "wrangler": "^3.63.2"
+  },
+  "type": "module",
+  "dependencies": {
+    "@tsndr/cloudflare-worker-jwt": "^2.5.3",
+    "bcryptjs": "^2.4.3",
+    "i18n-iso-countries": "^7.11.2",
+    "stripe": "^16.2.0",
+    "svelte-french-toast": "^1.2.0",
+    "svelte-turnstile": "^0.7.0",
+    "ua-parser-js": "^1.0.38",
+    "uuid": "^10.0.0",
+    "zod": "^3.23.8"
+  }
+}

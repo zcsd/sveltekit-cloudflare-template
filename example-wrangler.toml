@@ -1,0 +1,83 @@
+# !!!change `example-wrangler.toml` to `wrangler.toml` before you run the project locally!!!
+# !!!change `example.dev.vars` to `.dev.vars` before you run the project locally!!!
+# For local development purpose:
+#   1. set/bind Environment Variables in `.dev.vars` file
+#   2. set/bind D1, KV, Queues in `wrangler.toml` file
+# For production deployment:
+#   It's recommended to bind them in the Cloudflare dashboard.
+# How to access them in the code:
+#   1. Environment Variables: `platform.env.ENV_VAR_NAME`
+#   2. D1: `platform.env.DB`
+#   3. KV: `platform.env.LOGIN_SESSION_CACHE`
+#   4. Queues: `platform.env.ERROR_QUEUE`
+
+[[d1_databases]]
+binding = "DB" # the binding name is used in code (platform.env.DB), keep it consistent
+database_name = "example_db"
+database_id = "653c9dad-1793-4905-bfb4-c546875bdc86" 
+preview_database_id = "example_db"
+
+# https://developers.cloudflare.com/d1/get-started/
+# it's recommended to configure/operate the remote database using wrangler commands (examples below):
+# npx wrangler d1 execute example_db --remote --file=./db_schema/schema.sql 
+# npx wrangler d1 execute example_db --remote --command "SELECT * FROM user_account;"
+# npx wrangler d1 execute example_db --remote --command "DROP TABLE login_session;"
+
+# configure/operate the local database using wrangler commands (examples below):
+# npx wrangler d1 execute example_db --local --file=./db_schema/schema.sql
+# npx wrangler d1 execute example_db --local --command "SELECT * FROM user_account;"
+# npx wrangler d1 execute example_db --local --command "DELETE FROM user_account;"
+# npx wrangler d1 execute example_db --local --command "INSERT INTO user_account (uuid, email) VALUES ('abcde12345','abcd@gmail.com');"
+# npx wrangler d1 execute example_db --local --command "SELECT * FROM sqlite_master where type='table';"
+# npx wrangler d1 execute example_db --local --command "DROP TABLE login_session;"
+
+[[kv_namespaces]] 
+binding = "LOGIN_SESSION_CACHE" # the binding name is used in code (platform.env.LOGIN_SESSION_CACHE), keep it consistent
+id = "c5f0a2fefb6e4c27b6402e19c3f46dc8" 
+
+[[kv_namespaces]]
+binding = "RATE_LIMIT"  # the binding name is used in code (platform.env.RATE_LIMIT), keep it consistent
+id = "28b287992859414780e2fcb92c62839c"
+
+# https://developers.cloudflare.com/kv/reference/kv-commands/
+# operate the local KV namespace using wrangler commands (examples below):
+# npx wrangler kv:key list --local --binding="LOGIN_SESSION_CACHE"
+# npx wrangler kv:key put --local --binding="LOGIN_SESSION_CACHE" "key" "value"
+# npx wrangler kv:key get --local --binding="LOGIN_SESSION_CACHE" "key"
+# npx wrangler kv:key delete --local --binding="LOGIN_SESSION_CACHE" "key"
+
+[[queues.producers]] # actually, it's not necessary for local development
+queue = "error-queue"
+binding = "ERROR_QUEUE"  # the binding name is used in code (platform.env.ERROR_QUEUE), keep it consistent
+
+# https://developers.cloudflare.com/queues/get-started/
+# to use the queues.producers, we need to create a separate Cloudflare Worker for the queues.consumer.
+# the queues.consumer can receive the messages from the queues.producers and store them in the R2.
+# bind the queues.producers to the Pages in the Cloudflare dashboard.
+
+# Here are some latency test results for D1 and KV:
+# D1 was created in APAC region (SG). Currently. KV has two main data centers (EU and US) globally.
+
+# if client is in SG.
+# D1 latency: normal, ~20ms(select), ~100ms(insert), ~90ms(delete);  cold start, 200-300ms (select, insert)
+# KV latency: 200-300ms (put, delete), after 1 read/cache: ~10-15ms
+
+# if client is in HK.
+# D1 latency: normal, ~90ms(select), ~190ms(insert), ~140ms(delete)
+# KV latency: 200-300ms (put, delete), after 1 read/cache: ~10-15ms
+
+# if client is in CN GuangDong.
+# D1 latency: normal, ~400ms(select), ~500ms(insert), ~450ms(delete)
+# KV latency: ~120ms (put, delete), after 1 read/cache: ~10-15ms
+
+# if client is in JP Tokyo.
+# D1 latency: normal, ~150ms(select), ~270ms(insert), ~230ms(delete)
+# KV latency: 200-300ms (put, delete), after 1 read/cache: ~10-20ms
+
+# if client is in UK London.
+# D1 latency: normal, ~330ms(select), ~440ms(insert), ~400ms(delete)
+# KV latency: ~30-40ms (put, delete), after 1 read/cache: ~10-15ms
+
+# if client is in US Los Angeles.
+# D1 latency: normal, ~400ms(select), ~510ms(insert), ~470ms(delete)
+# KV latency: ~110-140ms (put, delete), after 1 read/cache: ~10-25ms
