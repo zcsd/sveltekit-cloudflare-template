@@ -1,6 +1,8 @@
 # Just In Case: A SvelteKit & Cloudflare Template
 
-If you are looking for a SvelteKit template that perfectly integrates Cloudflare Pages & KV & D1 database & Workers & Queues & R2 storage, then you are in the right place.
+If you are looking for a SvelteKit template that perfectly integrates Cloudflare Pages & KV & D1 database & Workers & Queues & R2 storage & Turnstile CAPTCHA, then you are in the right place.
+
+>Credits: Part of the UI and documentation for this project is originally from [CMSaasStarter](https://github.com/CriticalMoments/CMSaasStarter), which I have modified and enhanced with new features. While CMSaasStarter uses services from Supabase, I have replaced them with Cloudflare services and implemented different logic. If you prefer to use Supabase, you can check out the original project, which is also a great choice.
 
 ## Tech Stack
 
@@ -9,7 +11,7 @@ If you are looking for a SvelteKit template that perfectly integrates Cloudflare
   - Framework: TailwindCSS
   - Component library: DaisyUI
 - Hosting Stack (Everything in Cloudflare)
-  - Host + CDN: Cloudflare Pages
+  - Host: Cloudflare Pages
   - Database: Cloudflare D1
   - KV: Cloudflare KV
   - Storage: Cloudflare R2
@@ -25,9 +27,39 @@ If you are looking for a SvelteKit template that perfectly integrates Cloudflare
 
 ## Demo
 
-You can explore all the features using the fully functional demo [justincase.top](https://justincase.top).
+You are highly recommended to explore all the features using the fully functional demo [justincase.top](https://justincase.top).
 
 [![Try it Now](https://img.shields.io/badge/Try_it_Now-37a779?style=for-the-badge "Try it Now")](https://justincase.top)
+
+## Features
+
+- Hosting: Everything in one platform (Cloudflare). Easy to manage, deploy, and scale. All services are integrated and work seamlessly.
+
+- Authentication: Sign up, email verification, password sign in, magic-link sign in, forgot password, change password, delete account, and more.
+
+- Fast: Cloudflare global CDN and KV cache bring the amazing speed and performance.
+
+- Security: Session Management, rate limiting, error logging, CSRF protection, Turnstile CAPTCHA, HSTS, security related notification, and more.
+
+- Payments: Stripe Checkout, Stripe Portal, Stripe Webhooks, subscription management, pricing, and more. Good for SaaS, membership, or subscription-based services.
+
+- SEO Friendly: Server-Side Rendering, SEO metadata, Blog and RSS feed.
+
+- Highly Customizable: Less dependencies used, easy to modify, and extend. No auth library used, DIY for better control.
+
+- Responsive: Design for both desktop and mobile, responsive layout, and components.
+
+## Suggested Hosting & Services
+
+**Zero-Cost** is achievable for using this template with error logging disabled. Here are all the services used in the demo website:
+
+- [Cloudflare](https://developers.cloudflare.com/): Pages, Workers, D1, KV, R2, Turnstile are free to use. Cloudflare Queues requires the Workers Paid plan($5/month) to use, you can avoid using it by disabling the error logging. It's recommended to subscribe to the Workers Paid plan for higher limits and better performance.
+
+- [Resend](https://resend.com/) Email API: Free plan can support up to 3000 emails per month (100 emails per day) and one custom domain which is enough for small websites. You may consider upgrading to Pro plan if you need more. And you can also replace it with other email services, it's very easy to modify the code.
+
+- [Stripe](https://stripe.com/): Free to use, only charge when you make money. You can use the test mode for development and testing.
+
+- [Lark](https://www.larksuite.com/): Error notification can be sent to Lark group chat and notify the team members. You can avoid using it by disabling the error logging. The starter free plan can support up 50 team members, which is enough for small companies. You can also replace it with other services, such as Slack, Discord, etc. But I have to say Lark is wonderful.
 
 ## Quick Start
 
