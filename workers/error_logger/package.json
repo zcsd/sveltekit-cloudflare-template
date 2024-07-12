@@ -1,0 +1,12 @@
+{
+  "name": "error_logger",
+  "version": "0.0.0",
+  "devDependencies": {
+    "wrangler": "^3.48.0"
+  },
+  "private": true,
+  "scripts": {
+    "start": "wrangler dev",
+    "deploy": "wrangler deploy"
+  }
+}

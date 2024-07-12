@@ -46,7 +46,7 @@ id = "28b287992859414780e2fcb92c62839c"
 # npx wrangler kv:key get --local --binding="LOGIN_SESSION_CACHE" "key"
 # npx wrangler kv:key delete --local --binding="LOGIN_SESSION_CACHE" "key"
 
-[[queues.producers]] # actually, it's not necessary for local development
+[[queues.producers]] # actually, it's not necessary for local development, just leave it
 queue = "error-queue"
 binding = "ERROR_QUEUE"  # the binding name is used in code (platform.env.ERROR_QUEUE), keep it consistent
 

@@ -1,0 +1,12 @@
+name = "error-logger"
+main = "src/index.js"
+compatibility_date = "2023-11-22"
+
+[[queues.consumers]]
+queue = "error-queue"
+max_batch_size = 1  # the maximum number of messages to process in a single batch
+max_batch_timeout = 30  # the maximum time to wait for messages in a batch (in seconds)
+
+[[r2_buckets]]
+binding = 'ERROR_BUCKET'
+bucket_name = 'error-bucket'
