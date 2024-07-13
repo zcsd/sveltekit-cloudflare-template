@@ -204,7 +204,7 @@
       <div class="mt-6 md:mt-2">
         <a href="https://github.com/zcsd/sveltekit-cloudflare-template" target="_blank">
           <button class="btn btn-primary btn-sm px-6"
-            >Deploy on Cloudflare</button
+            >★ us on Github</button
           >
         </a>
         <a href="https://github.com/zcsd/sveltekit-cloudflare-template/blob/master/README.md" target="_blank">

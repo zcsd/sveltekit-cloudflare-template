@@ -1,3 +1,17 @@
+<p align="center">
+    <picture>
+        <img width="500" alt="Just In Case Homepage" src="https://images.linzichun.com/blog/sveltekit_cloudflare_template/homepage.jpg">
+    </picture>
+</p>
+
+<p align="center">
+  <a href="https://justincase.top"><strong>Demo & Homepage</strong></a> •
+  <a href="https://github.com/zcsd/sveltekit-cloudflare-template#quick-start"><strong>Quick Start Guide</strong></a> • 
+  <a href="https://github.com/zcsd/sveltekit-cloudflare-template/issues"><strong>Issues</strong></a>
+</p>
+
+<br/>
+
 # Just In Case: A SvelteKit & Cloudflare Template
 
 If you are looking for a SvelteKit template that perfectly integrates Cloudflare Pages & KV & D1 database & Workers & Queues & R2 storage & Turnstile CAPTCHA (**One Platform for Everything**), then you are in the right place. You can build a fully functional website with authentication, subscriptions, profile, blog, contact-us and more using this template. It's designed for SaaS, membership, or subscription-based services.
@@ -28,6 +42,20 @@ If you are looking for a SvelteKit template that perfectly integrates Cloudflare
 You are highly recommended to explore all the features using the fully functional demo [justincase.top](https://justincase.top).
 
 [![Try it Now](https://img.shields.io/badge/Try_it_Now-37a779?style=for-the-badge "Try it Now")](https://justincase.top)
+
+<a href="https://justincase.top">
+<kbd>
+<img width="600" alt="sign in page" src="https://images.linzichun.com/blog/sveltekit_cloudflare_template/sign_in_page.jpg">
+</kbd>
+<br>
+<kbd>
+<img width="600" alt="sessions page" src="https://images.linzichun.com/blog/sveltekit_cloudflare_template/sessions_page.jpg">
+</kbd>
+<br>
+<kbd>
+<img width="600" alt="checkout portal" src="https://images.linzichun.com/blog/sveltekit_cloudflare_template/checkout_portal.jpg">
+</kbd>
+</a>
 
 ## Features
 
